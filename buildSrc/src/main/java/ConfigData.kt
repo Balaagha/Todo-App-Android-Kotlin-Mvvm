@@ -1,6 +1,6 @@
 object ConfigData {
     const val compileSdk = 31
-    const val applicationId = "com.example.androidimpltemplate"
+    const val applicationId = "com.example.todoapp"
     const val minSdk = 21
     const val targetSdk = 31
     const val versionCode = 1

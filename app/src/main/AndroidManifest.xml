@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.androidimpltemplate">
+    package="com.example.todoapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="com.example.androidimpltemplate.MyApplication"
+        android:name="com.example.todoapp.MyApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +19,7 @@
         tools:targetApi="m">
 
         <activity
-            android:name=".menu.MenuActivity"
+            android:name="com.example.todoapp.menu.MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.androidimpltemplate.ui.MainActivity"
+            android:name="com.example.todoapp.ui.MainActivity"
             android:exported="true" />
 
         <meta-data

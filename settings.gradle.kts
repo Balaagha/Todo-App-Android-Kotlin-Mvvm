@@ -1,2 +1,2 @@
-rootProject.name = "Android Mvvm Clean Architecture Example"
+rootProject.name = "AndroidTodoApp"
 include(":app")

@@ -6,13 +6,13 @@
     app:startDestination="@id/menuSplashScreenFragment">
     <fragment
         android:id="@+id/menuSplashScreenFragment"
-        android:name="com.example.androidimpltemplate.menu.view.MenuSplashScreenFragment"
+        android:name="com.example.todoapp.menu.view.MenuSplashScreenFragment"
         android:label="MenuSplashScreenFragment"
         tools:layout="@layout/fragment_menu_splash_screen"/>
 
     <fragment
         android:id="@+id/menuItemListFragment"
-        android:name="com.example.androidimpltemplate.menu.view.MenuItemListFragment"
+        android:name="com.example.todoapp.menu.view.MenuItemListFragment"
         android:label="fragment_menu_item_list"
         tools:layout="@layout/fragment_menu_item_list" />
 </navigation>
