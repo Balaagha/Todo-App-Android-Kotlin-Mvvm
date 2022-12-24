@@ -2,7 +2,11 @@
     <string name="app_name">Android Implementation Template</string>
     <string name="add_title">Add title</string>
     <string name="add_description">Add Description</string>
-    <string name="create_task">create</string>
-    <string name="update_task">update</string>
-    <string name="add_task">Add Task</string>
+    <string name="create_task_btn">create</string>
+    <string name="update_task_btn">update</string>
+    <string name="add_task_title">Add Task</string>
+    <string name="update_title">Update Task</string>
+    <string name="create_title">Create Task</string>
+    <string name="empty_title_error_message">Please add title :)</string>
+    <string name="splash_footer_text">Android Note app Impl | By Balaagha Alihumatov</string>
 </resources>

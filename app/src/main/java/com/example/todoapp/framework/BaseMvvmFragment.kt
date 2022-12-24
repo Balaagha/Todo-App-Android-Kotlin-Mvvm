@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.viewbinding.ViewBinding
 import com.example.todoapp.utils.extentions.observe
+import com.google.android.material.snackbar.Snackbar
 import kotlin.reflect.KClass
 
 abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel>(
@@ -57,11 +58,16 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel>(
     }
 
     protected open fun showSnackBarViaBaseUiEvent(uiActionEvent: GenericUiEvent.SnackBar) {
-        // No Implement yet
+        Snackbar.make(binding.root,uiActionEvent.title ?: EMPTY,Snackbar.LENGTH_LONG)
+            .show()
     }
 
     protected open fun showAlertViaBaseUiEvent(uiActionEvent: GenericUiEvent.Alert) {
         // No Implement yet
+    }
+
+    companion object {
+        private const val EMPTY = ""
     }
 
 }

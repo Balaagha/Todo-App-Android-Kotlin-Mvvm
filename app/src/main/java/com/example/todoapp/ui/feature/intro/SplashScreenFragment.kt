@@ -35,13 +35,7 @@ class SplashScreenFragment :
                 startDelay = 3600
                 withEndAction {
                     viewLifecycleOwner.lifecycleScope.launchWhenResumed {
-                        findNavController().navigate(
-                            R.id.mainFragment,
-                            null,
-                            NavOptions.Builder()
-                                .setPopUpTo(R.id.splashScreenFragment, true)
-                                .build()
-                        )
+                        navigationMainFragment()
                     }
                 }
             }
@@ -51,10 +45,10 @@ class SplashScreenFragment :
 
     private fun getTitleText(): CharSequence? = SpannableStringBuilder()
         .color(ContextCompat.getColor(requireContext(), R.color.white)) {
-            append("Be ")
+            append("Note ")
         }
         .color(ContextCompat.getColor(requireContext(), R.color.red_01)) {
-            append("Tech")
+            append("App")
         }
 
     private fun navigationMainFragment() {
