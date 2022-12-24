@@ -1,4 +1,4 @@
-package com.example.todoapp.menu.view
+package com.example.todoapp.ui.feature.intro
 
 import android.annotation.SuppressLint
 import android.text.SpannableStringBuilder
@@ -9,26 +9,16 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
 import com.example.todoapp.base.BaseFragment
-import com.example.todoapp.databinding.FragmentMenuSplashScreenBinding
-import kotlinx.android.synthetic.main.fragment_menu_splash_screen.*
+import com.example.todoapp.databinding.FragmentSplashScreenBinding
 
 @SuppressLint("CustomSplashScreen")
-class MenuSplashScreenFragment: BaseFragment<FragmentMenuSplashScreenBinding>(FragmentMenuSplashScreenBinding::inflate) {
+class SplashScreenFragment :
+    BaseFragment<FragmentSplashScreenBinding>(FragmentSplashScreenBinding::inflate) {
 
-    override var statusBarVisibility: Boolean? = false
 
     override fun setup() {
-
-        val string = SpannableStringBuilder()
-            .color(ContextCompat.getColor(requireContext(), R.color.white )) {
-                append("Be ")
-            }
-            .color(ContextCompat.getColor(requireContext(), R.color.red_01)) {
-                append("Tech")
-            }
-        tvTitle.text = string
-
         binding.apply {
+            tvTitle.text = getTitleText()
             lottieAnimView.animate().apply {
                 translationY(-1500F)
                 duration = 750
@@ -46,16 +36,36 @@ class MenuSplashScreenFragment: BaseFragment<FragmentMenuSplashScreenBinding>(Fr
                 withEndAction {
                     viewLifecycleOwner.lifecycleScope.launchWhenResumed {
                         findNavController().navigate(
-                            R.id.menuItemListFragment,
+                            R.id.mainFragment,
                             null,
                             NavOptions.Builder()
-                            .setPopUpTo(R.id.menuSplashScreenFragment, true)
-                            .build()
+                                .setPopUpTo(R.id.splashScreenFragment, true)
+                                .build()
                         )
                     }
                 }
             }
         }
     }
+
+
+    private fun getTitleText(): CharSequence? = SpannableStringBuilder()
+        .color(ContextCompat.getColor(requireContext(), R.color.white)) {
+            append("Be ")
+        }
+        .color(ContextCompat.getColor(requireContext(), R.color.red_01)) {
+            append("Tech")
+        }
+
+    private fun navigationMainFragment() {
+        findNavController().navigate(
+            R.id.mainFragment,
+            null,
+            NavOptions.Builder()
+                .setPopUpTo(R.id.splashScreenFragment, true)
+                .build()
+        )
+    }
+
 
 }

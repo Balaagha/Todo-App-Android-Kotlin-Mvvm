@@ -9,6 +9,7 @@ import javax.inject.Inject
 
 @HiltAndroidApp
 class MyApplication : Application() {
+
     @Inject
     lateinit var networkStatusListenerHelper: NetworkStatusListenerHelper
 

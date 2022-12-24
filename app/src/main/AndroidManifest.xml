@@ -18,17 +18,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
 
+
         <activity
-            android:name="com.example.todoapp.menu.MenuActivity"
-            android:exported="true">
+            android:name="com.example.todoapp.ui.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.todoapp.ui.MainActivity"
-            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"

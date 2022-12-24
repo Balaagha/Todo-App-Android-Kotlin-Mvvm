@@ -14,12 +14,6 @@ abstract class BaseFragment<VB : ViewBinding>(
     private val bindingInflater: (LayoutInflater) -> VB,
 ) : Fragment() {
 
-    open var onBackPressed: () -> Unit = {}
-
-    open var statusBarColor: Int? = null
-    open var statusBarVisibility: Boolean? = null
-
-
     private var _binding: ViewBinding? = null
 
     @Suppress("UNCHECKED_CAST")
@@ -28,16 +22,6 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                onBackPressed.invoke()
-                isEnabled = false
-                activity?.onBackPressed()
-                statusBarVisibility?.let { isVisible ->
-                    this@BaseFragment.changeStatusBarVisibility(!isVisible, R.color.white)
-                }
-            }
-        })
     }
 
     override fun onCreateView(
@@ -45,13 +29,6 @@ abstract class BaseFragment<VB : ViewBinding>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        statusBarVisibility?.let { isVisible ->
-            this.changeStatusBarVisibility(isVisible, statusBarColor ?: R.color.statusBarColor)
-        } ?: kotlin.run {
-            statusBarColor?.let {
-                this.changeStatusBarVisibility(statusBarVisibility ?: true, statusBarColor)
-            }
-        }
         _binding = bindingInflater.invoke(inflater)
         return requireNotNull(_binding).root
     }
