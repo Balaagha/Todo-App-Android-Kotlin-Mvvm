@@ -8,7 +8,7 @@ import androidx.room.Update
 interface BaseDao<T> {
 
     /**
-     * Insert an object in the database.
+     * Insert an object in to database.
      *
      * @param obj the object to be inserted.
      */
@@ -16,7 +16,7 @@ interface BaseDao<T> {
     suspend fun insert(obj: T)
 
     /**
-     * Insert an array of objects in the database.
+     * Insert an array of objects in to database.
      *
      * @param objects the objects to be inserted.
      */
@@ -24,7 +24,15 @@ interface BaseDao<T> {
     suspend fun insert(objects: List<T>)
 
     /**
-     * Update an object from the database.
+     * Insert objects like a vararg parameters in to database.
+     *
+     * @param obj the object to be inserted.
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(vararg obj: T): List<Long>
+
+    /**
+     * Update an object from to database.
      *
      * @param obj the object to be updated
      */
@@ -32,7 +40,7 @@ interface BaseDao<T> {
     suspend fun update(obj: T)
 
     /**
-     * Delete an object from the database
+     * Delete an object from to database
      *
      * @param obj the object to be deleted
      */

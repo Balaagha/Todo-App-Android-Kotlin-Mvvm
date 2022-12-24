@@ -1,12 +1,10 @@
 package com.example.todoapp.data.database.utils
 
+import com.example.todoapp.BuildConfig
 
 object DatabaseConstant {
-
     // ROOM Database
-    const val DATABASE_NAME = "app_database"
-    const val MOBILE_TABLE = "mobile_table"
-    const val CACHED_CAST_TABLE = "cached_cast_table"
-    const val CACHED_MOVIE_TABLE = "cached_movie_table"
-
+    const val DATABASE_NAME = "app_database_note"
+    const val CACHED_NOTE_TABLE = "cached_note_table"
+    const val ROOM_DATABASE_VERSION = BuildConfig.VERSION_CODE
 }

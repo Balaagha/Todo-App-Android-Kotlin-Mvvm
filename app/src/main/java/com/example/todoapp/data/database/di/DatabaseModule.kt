@@ -29,14 +29,8 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideMovieDao(
+    fun provideNoteDao(
         database: AppDatabase,
-    ) = database.movieDao()
-
-    @Singleton
-    @Provides
-    fun provideCastResponseDao(
-        database: AppDatabase,
-    ) = database.castResponseDao()
+    ) = database.noteDao()
 
 }

@@ -2,22 +2,15 @@ package com.example.todoapp.data.database.base
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.example.todoapp.data.database.feature.cast.dao.CastResponseDao
-import com.example.todoapp.data.database.feature.cast.model.CachedCastResponse
-import com.example.todoapp.data.database.feature.movies.dao.MoviesDao
-import com.example.todoapp.data.database.feature.movies.model.CachedMovieModel
+import com.example.todoapp.data.database.feature.note.dao.NoteDao
+import com.example.todoapp.data.database.feature.note.model.Note
+import com.example.todoapp.data.database.utils.DatabaseConstant
 
 @Database(
-    entities = [
-        CachedMovieModel::class,
-        CachedCastResponse::class
-    ],
-    version = 1,
+    entities = [Note::class],
+    version = DatabaseConstant.ROOM_DATABASE_VERSION,
     exportSchema = false
 )
-@TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun movieDao(): MoviesDao
-    abstract fun castResponseDao(): CastResponseDao
+    abstract fun noteDao(): NoteDao
 }

@@ -1,11 +1,13 @@
 package com.example.todoapp.ui.feature.processnote.view
 
 import android.util.Log
+import android.view.View
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.example.todoapp.R
 import com.example.todoapp.data.database.feature.note.model.Note
-import com.example.todoapp.framework.BaseMvvmFragment
 import com.example.todoapp.databinding.FragmentProcessNoteBinding
+import com.example.todoapp.framework.BaseMvvmFragment
 import com.example.todoapp.ui.feature.processnote.viewmodel.ProcessNoteViewModel
 import com.example.todoapp.utils.extentions.isNotNull
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,9 +28,18 @@ class ProcessNoteFragment : BaseMvvmFragment<FragmentProcessNoteBinding, Process
     }
 
     override fun setup() {
-        Log.d("TAG", "setup => ${selectedNote?.title} | ${selectedNote?.body}")
         initUiStartedData()
         initViewListener()
+        // TODO(Remove unused codes)
+        viewModel.getAllNote().observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+
+            } else {
+                it.forEach {
+                    Log.d("myTag","${it.id} => ${it.title}")
+                }
+            }
+        }
     }
 
     private fun initUiStartedData() {
@@ -47,9 +58,9 @@ class ProcessNoteFragment : BaseMvvmFragment<FragmentProcessNoteBinding, Process
             btnCreateOrUpdate.setOnClickListener {
                 validateInputs { changedNote ->
                     if (isUpdatePage && selectedNote?.id.isNotNull()) {
-                        viewModel.updateNoteById(changedNote)
+                        viewModel.updateNote(changedNote)
                     } else {
-                        viewModel.saveNote(changedNote)
+                        viewModel.addNote(changedNote)
                     }
                 }
 
@@ -74,10 +85,6 @@ class ProcessNoteFragment : BaseMvvmFragment<FragmentProcessNoteBinding, Process
             )
         }
     }
-
-//    private fun getChangedNoteDataForProcess(): Note = Note(
-//        title = binding.editTvTitle.text.toString()
-//    )
 
 
 }
