@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Android Implementation Template</string>
+    <string name="add_title">Add title</string>
+    <string name="add_description">Add Description</string>
+    <string name="create_task">create</string>
+    <string name="update_task">update</string>
+    <string name="add_task">Add Task</string>
 </resources>

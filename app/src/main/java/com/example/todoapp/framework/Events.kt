@@ -1,4 +1,4 @@
-package com.example.todoapp.base
+package com.example.todoapp.framework
 
 sealed class Events {
   object Loading : Events()

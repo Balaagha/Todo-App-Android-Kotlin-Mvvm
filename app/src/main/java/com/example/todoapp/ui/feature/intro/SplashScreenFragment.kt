@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.todoapp.R
-import com.example.todoapp.base.BaseFragment
+import com.example.todoapp.framework.BaseFragment
 import com.example.todoapp.databinding.FragmentSplashScreenBinding
 
 @SuppressLint("CustomSplashScreen")

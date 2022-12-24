@@ -16,6 +16,11 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/processNoteFragment"
+        android:name="com.example.todoapp.ui.feature.processnote.view.ProcessNoteFragment"
+        android:label="ProcessNoteFragment"
+        tools:layout="@layout/fragment_process_note" />
 
 
 </navigation>

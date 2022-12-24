@@ -1,4 +1,4 @@
-package com.example.todoapp.base
+package com.example.todoapp.framework
 
 import android.os.Bundle
 import android.util.Log
@@ -26,12 +26,15 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initObservers()
     }
 
     private fun initObservers() {
         // Listen to events
         observe(viewModel.singleTimeUiEvent, ::handleGenericsUiActionEvents)
+
     }
+
     protected open fun handleGenericsUiActionEvents(uiActionEvent: GenericUiEvent?) {
         when (uiActionEvent) {
             is GenericUiEvent.Alert -> {
@@ -44,22 +47,21 @@ abstract class BaseMvvmFragment<VB : ViewBinding, VM : BaseViewModel>(
                 showToastViaBaseUiEvent(uiActionEvent)
             }
             else -> {
-                Log.e(BaseViewModel.TAG,"Unknown event handle $uiActionEvent ")
+                Log.e(BaseViewModel.TAG, "Unknown event handle $uiActionEvent ")
             }
         }
     }
 
     protected open fun showToastViaBaseUiEvent(uiActionEvent: GenericUiEvent.Toast) {
-        // Implement
+        // No Implement yet
     }
+
     protected open fun showSnackBarViaBaseUiEvent(uiActionEvent: GenericUiEvent.SnackBar) {
-
+        // No Implement yet
     }
+
     protected open fun showAlertViaBaseUiEvent(uiActionEvent: GenericUiEvent.Alert) {
-
+        // No Implement yet
     }
-
-
-
 
 }

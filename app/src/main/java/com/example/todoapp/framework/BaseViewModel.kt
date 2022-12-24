@@ -1,4 +1,4 @@
-package com.example.todoapp.base
+package com.example.todoapp.framework
 
 import android.app.Application
 import android.util.Log
@@ -20,7 +20,6 @@ open class BaseViewModel(
      * generic events for triggering one time on UI
      */
     val singleTimeUiEvent: SingleLiveEvent<GenericUiEvent> = SingleLiveEvent()
-
 
     /**
      * Top level exception handler for the included context
