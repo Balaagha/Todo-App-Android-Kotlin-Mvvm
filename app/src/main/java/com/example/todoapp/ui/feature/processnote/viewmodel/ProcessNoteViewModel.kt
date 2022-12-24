@@ -19,8 +19,6 @@ class ProcessNoteViewModel @Inject constructor(
     private val noteOperationRepository: NoteOperationRepository
 ) : BaseViewModel(savedStateHandle, applicationData) {
 
-    fun getAllNote() = noteOperationRepository.getAllNotesData()
-
     fun updateNote(updatedItem: Note) {
         launchSafe(Dispatchers.IO) {
             noteOperationRepository.updateNote(updatedItem)

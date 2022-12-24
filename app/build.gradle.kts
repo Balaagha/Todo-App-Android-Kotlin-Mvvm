@@ -48,6 +48,7 @@ android {
 dependencies {
     // App Libraries
     implementation(AppDependencies.commonImplementationLibraries)
+    implementation("androidx.databinding:databinding-runtime:7.3.1")
     kapt(AppDependencies.commonKaptLibraries)
     annotationProcessor(AppDependencies.commonAnnotationProcessorLibraries)
 

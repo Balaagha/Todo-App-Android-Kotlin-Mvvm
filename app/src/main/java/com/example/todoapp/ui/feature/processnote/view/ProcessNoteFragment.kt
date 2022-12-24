@@ -1,8 +1,6 @@
 package com.example.todoapp.ui.feature.processnote.view
 
-import android.util.Log
-import android.view.View
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.todoapp.R
 import com.example.todoapp.data.database.feature.note.model.Note
@@ -30,16 +28,6 @@ class ProcessNoteFragment : BaseMvvmFragment<FragmentProcessNoteBinding, Process
     override fun setup() {
         initUiStartedData()
         initViewListener()
-        // TODO(Remove unused codes)
-        viewModel.getAllNote().observe(viewLifecycleOwner) {
-            if (it.isEmpty()) {
-
-            } else {
-                it.forEach {
-                    Log.d("myTag","${it.id} => ${it.title}")
-                }
-            }
-        }
     }
 
     private fun initUiStartedData() {
@@ -62,6 +50,7 @@ class ProcessNoteFragment : BaseMvvmFragment<FragmentProcessNoteBinding, Process
                     } else {
                         viewModel.addNote(changedNote)
                     }
+                    findNavController().popBackStack()
                 }
 
             }
