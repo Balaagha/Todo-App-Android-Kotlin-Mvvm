@@ -11,6 +11,7 @@ class NoteOperationRepositoryImpl @Inject constructor(
 
     override fun getAllNotesData():LiveData<List<Note>> = dataSource.getAllNotes()
 
+    override fun getSelectedNoteData(noteId: Long): Note = dataSource.getNote(noteId)
 
     override suspend fun insertNote(note: Note) {
         dataSource.insertNote(note)

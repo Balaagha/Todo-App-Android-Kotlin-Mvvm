@@ -7,6 +7,8 @@ interface NoteLocalDataSource {
 
     fun getAllNotes(): LiveData<List<Note>>
 
+    fun getNote(noteId: Long): Note
+
     suspend fun insertAll(vararg notes: Note): List<Long>
 
     suspend fun insertNote(note: Note)

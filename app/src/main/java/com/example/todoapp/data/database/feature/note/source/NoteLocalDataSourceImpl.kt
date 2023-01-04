@@ -11,6 +11,8 @@ class NoteLocalDataSourceImpl @Inject constructor(
 
     override fun getAllNotes():LiveData<List<Note>> = dao.getAllNotes()
 
+    override fun getNote(noteId: Long): Note = dao.getNote(noteId)
+
     override suspend fun insertAll(vararg notes: Note): List<Long> {
         return dao.insertAll(*notes)
     }

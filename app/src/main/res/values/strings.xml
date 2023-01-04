@@ -11,4 +11,5 @@
     <string name="splash_footer_text">Android Note app Impl | By Balaagha Alihumatov</string>
     <string name="note_app_name">Note App</string>
     <string name="empty_page_case">You dont have any note. You can click create button for adding new note</string>
+    <string name="detail_note_title">Detail note</string>
 </resources>

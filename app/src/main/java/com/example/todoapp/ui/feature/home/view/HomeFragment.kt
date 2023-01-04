@@ -45,8 +45,12 @@ class HomeFragment : BaseMvvmFragment<FragmentHomeBinding,HomeViewModel>(
                 val action = HomeFragmentDirections.actionMainFragmentToProcessNoteFragment()
                 findNavController().navigate(action)
             }
-            adapter.setOnItemClickListener {
+            adapter.setOnItemClickListenerForUpdate {
                 val action = HomeFragmentDirections.actionMainFragmentToProcessNoteFragment(it)
+                findNavController().navigate(action)
+            }
+            adapter.setOnItemClickListenerForDetail {
+                val action = HomeFragmentDirections.actionMainFragmentToNoteDetailFragment(it)
                 findNavController().navigate(action)
             }
         }

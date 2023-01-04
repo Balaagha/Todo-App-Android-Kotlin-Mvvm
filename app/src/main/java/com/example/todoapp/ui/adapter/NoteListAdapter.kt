@@ -10,9 +10,9 @@ import com.example.todoapp.R
 import com.example.todoapp.data.database.feature.note.model.Note
 import com.example.todoapp.databinding.ItemNoteLayoutBinding
 
-class NoteListAdapter: RecyclerView.Adapter<NoteListAdapter.MyViewHolder>() {
+class NoteListAdapter : RecyclerView.Adapter<NoteListAdapter.MyViewHolder>() {
 
-    private val callback = object : DiffUtil.ItemCallback<Note>(){
+    private val callback = object : DiffUtil.ItemCallback<Note>() {
         override fun areItemsTheSame(
             oldItem: Note,
             newItem: Note
@@ -24,7 +24,7 @@ class NoteListAdapter: RecyclerView.Adapter<NoteListAdapter.MyViewHolder>() {
             oldItem: Note,
             newItem: Note
         ): Boolean {
-            return oldItem==newItem
+            return oldItem == newItem
         }
     }
 
@@ -33,8 +33,9 @@ class NoteListAdapter: RecyclerView.Adapter<NoteListAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
             DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context), R.layout.item_note_layout, parent, false
-        ))
+                LayoutInflater.from(parent.context), R.layout.item_note_layout, parent, false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -45,24 +46,35 @@ class NoteListAdapter: RecyclerView.Adapter<NoteListAdapter.MyViewHolder>() {
         return differ.currentList.size
     }
 
-    inner class MyViewHolder(private val noteItemBinding: ItemNoteLayoutBinding) : RecyclerView.ViewHolder(noteItemBinding.root){
-        fun bind(note: Note){
+    inner class MyViewHolder(private val noteItemBinding: ItemNoteLayoutBinding) :
+        RecyclerView.ViewHolder(noteItemBinding.root) {
+        fun bind(note: Note) {
             noteItemBinding.noteItem = note
             noteItemBinding.executePendingBindings()
 
-            noteItemBinding.root.setOnClickListener{
-                onItemClickListener?.let {
+            noteItemBinding.root.setOnClickListener {
+                onItemClickListenerForUpdate?.let {
                     it(note)
+                }
+            }
+
+            noteItemBinding.leftPrimary.setOnClickListener {
+                onItemClickListenerForDetail?.let {
+                    it(note.id)
                 }
             }
 
         }
     }
 
-    private var onItemClickListener :((Note)->Unit)?=null
+    private var onItemClickListenerForUpdate: ((Note) -> Unit)? = null
+    private var onItemClickListenerForDetail: ((Long) -> Unit)? = null
 
-    fun setOnItemClickListener(listener : (Note)->Unit){
-        onItemClickListener = listener
+    fun setOnItemClickListenerForUpdate(listener: (Note) -> Unit) {
+        onItemClickListenerForUpdate = listener
+    }
+    fun setOnItemClickListenerForDetail(listener: (Long) -> Unit) {
+        onItemClickListenerForDetail = listener
     }
 
 }

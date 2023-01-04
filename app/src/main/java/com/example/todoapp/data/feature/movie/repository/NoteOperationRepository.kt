@@ -7,6 +7,8 @@ interface NoteOperationRepository {
 
     fun getAllNotesData(): LiveData<List<Note>>
 
+    fun getSelectedNoteData(noteId: Long): Note
+
     suspend fun insertNote(note: Note)
 
     suspend fun updateNote(note: Note)
